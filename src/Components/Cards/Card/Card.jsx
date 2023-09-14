@@ -1,22 +1,22 @@
 import PropTypes from "prop-types";
 
-const Card = ({ card }) => {
-  console.log(card);
+const Card = ({ card ,handleVisitedCountry}) => {
+  console.log( handleVisitedCountry);
   return (
     <div >
       <div className="card bg-base-100 shadow-xl">
         <figure>
-          <img
+          <img className="w-72 h-36"
             src= {card.flags.png}
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{card.name.common}</h2>
+          <h2 className="card-title">Country: {card.name.common}</h2>
           <h2 className="card-title">Capital: {card.capital }</h2>
           <h2 className="card-title">Area: {card.area} km<sup>2</sup></h2>
           <h2 className="card-title">Population: {card.population}</h2>
           <div className="card-actions ">
-            <button className="btn btn-primary">Buy Now</button>
+            <button onClick={() => handleVisitedCountry(card)} className="btn btn-primary">Visited</button>
           </div>
         </div>
       </div>
@@ -25,7 +25,8 @@ const Card = ({ card }) => {
 };
 
 Card.propTypes = {
-  card: PropTypes.array,
+    card: PropTypes.array,
+    handleVisitedCountry:PropTypes.func
 };
 
 export default Card;
