@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Card = ({ card ,handleVisitedCountry}) => {
+const Card = ({ card ,handleVisitedCountry,handleVisitedFlag}) => {
   console.log( handleVisitedCountry);
   return (
     <div >
@@ -16,7 +16,8 @@ const Card = ({ card ,handleVisitedCountry}) => {
           <h2 className="card-title">Area: {card.area} km<sup>2</sup></h2>
           <h2 className="card-title">Population: {card.population}</h2>
           <div className="card-actions ">
-            <button onClick={() => handleVisitedCountry(card)} className="btn btn-primary">Visited</button>
+                      <button onClick={() => handleVisitedCountry(card)} className="btn btn-primary">Visited</button>
+                      <button onClick={()=>handleVisitedFlag(card.flags.png)} className="btn btn-primary">Add Flag</button>
           </div>
         </div>
       </div>
@@ -26,7 +27,8 @@ const Card = ({ card ,handleVisitedCountry}) => {
 
 Card.propTypes = {
     card: PropTypes.array,
-    handleVisitedCountry:PropTypes.func
+    handleVisitedCountry: PropTypes.func,
+    handleVisitedFlag:PropTypes.func
 };
 
 export default Card;
